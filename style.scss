@@ -1,0 +1,221 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:700,300);
+
+.frame {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  height: 400px;
+  margin-top: -200px;
+  margin-left: -200px;
+  border-radius: 2px;
+	box-shadow: 4px 8px 16px 0 rgba(0,0,0,0.1);
+	overflow: hidden;
+  background: #023047;
+  color: #333;
+	font-family: 'Open Sans', Helvetica, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);	
+}
+
+svg {
+	margin-left: 23px;
+	position: absolute;
+	margin-top: -150px;
+}
+
+rect, line, polygon {
+	fill:none;
+	stroke:#e5e5e5;
+	stroke-width: 3.5;
+	margin-left: 20px;
+}
+
+rect, .line1{
+	stroke-dasharray: 800;
+  stroke-dashoffset: 0;
+}
+.line2 {
+	stroke-dasharray: 100;
+	stroke-dashoffset: 20;
+}
+
+polygon {
+	stroke-dasharray: 1000;
+	stroke-dashoffset: 1000;
+}
+
+.circle1, .circle2 {
+	
+	width: 220px;
+	height:220px;
+	border-radius: 100%;
+}
+.circle1 {
+	background-color: #219ebc;
+}
+
+.circle2 {
+	border: #219ebc solid 4px;
+}
+
+button {
+   margin-top: 25px;
+	 margin-left: 6%;
+	background-color:#e5e5e5;
+	color: #023047;
+	width: 200px;
+	height: 40px;
+	border-radius: 20px;
+	cursor:pointer;
+	grid-area: 1 / 1;
+}
+
+button:hover{
+	background-color:#ffb703;
+	color: #fff;
+}
+
+svg~div{
+	display:grid;
+}
+
+.send {
+	z-index:10;
+}
+
+.revert {
+	z-index:5;
+	opacity:0;
+}
+
+.active rect {
+	animation: clear 0.7s linear forwards;
+}
+
+.active .line1 {
+	animation: clear 0.5s linear forwards;
+}
+
+.active .line2 {
+	animation: extend 1s linear 0.5s 1 forwards;
+}
+
+.active polygon{
+	animation: plane 1.5s linear 0.7s forwards;
+}
+
+.active svg {
+	animation: move 0.7s linear 1.3s forwards;
+}
+
+.active .circle1 {
+	animation: circle1 0.8s linear 0.5s forwards;
+}
+.active .circle2 {
+	animation: circle2 0.7s linear 1s forwards;
+}
+
+.active button {
+	animation: button 1.7s ease-in-out 1.7s forwards;
+}
+
+.active .revert{
+	animation: button2 1s ease 3.5s forwards;
+}
+
+@keyframes clear {
+  to {
+    stroke-dashoffset: 800;
+  }
+}
+
+@keyframes extend {
+  to {
+    stroke-dasharray:180;
+  }
+}
+
+@keyframes plane {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes move {
+	50%{
+		transform: translateX(-20px) translateY(20px);
+		opacity:1;	
+	}
+	75%{
+		transform: translateX(100px) translateY(-100px) scale(0.6);
+		opacity:0.4;	
+	}
+  100% {
+    transform: translateX(250px) translateY(-250px) scale(0);
+		opacity:0;
+  }
+}
+
+@keyframes circle1 {
+	0% {
+    transform: scale(1);
+  }
+	50% {
+		transform: scale(1.2);
+	}
+
+  100% {
+    transform: scale(0);
+  }
+}
+
+@keyframes circle2 {
+	to {
+    transform: scale(0);
+  }
+}
+
+@keyframes button {
+	0%{
+		margin-left: 6%;
+	  background-color:#e5e5e5;
+	  width: 200px;
+		color: transparent;
+	}
+	50% {
+		width:40px;
+		margin-left: 40%;
+		background-color: #ffb703;
+		color: transparent;
+	}
+	
+	75% {
+		width:40px;
+		margin-left: 40%;
+		background-color: #ffb703;
+		color: transparent;
+		transform: scale(1.2);
+	}
+	
+	100%{
+		width:40px;
+		margin-left: 40%;
+		background-color: #ffb703;
+		color: transparent;
+		transform: scale(0);
+	}
+}
+
+@keyframes button2 {
+  to {
+    opacity:1;
+  }
+}
